@@ -3,6 +3,8 @@
         "*.tcc": "cpp",
         "vector": "cpp",
         "ratio": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "limits": "cpp",
+        "iostream": "cpp"
     }
 }

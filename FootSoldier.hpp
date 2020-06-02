@@ -1,9 +1,19 @@
 #pragma once
 #include "Soldier.hpp"
 class FootSoldier : public Soldier {
+private:
+    static const int INIT_HP = 100;
+    static const uint DAMAGE = 10;
 
 public:
     FootSoldier(){};
-    FootSoldier(uint num) : Soldier(num){};
+    FootSoldier(uint num) {
+        player_num = num;
+        type = FOOT_SOLDIER;
+        hp = INIT_HP;
+        damage = DAMAGE;
+    };
     ~FootSoldier(){};
+    void action(vector<vector<Soldier *>> &board, pair<int, int> location);
+    const uint getInitHp() const;
 };
