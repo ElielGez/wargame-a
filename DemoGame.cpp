@@ -10,6 +10,10 @@
 #include "DemoGame.hpp"
 #include "FootCommander.hpp"
 #include "FootSoldier.hpp"
+#include "Paramedic.hpp"
+#include "ParamedicCommander.hpp"
+#include "Sniper.hpp"
+#include "SniperCommander.hpp"
 
 #include <cassert>
 
@@ -18,34 +22,31 @@ namespace WarGame {
 DemoGame::DemoGame() : board(8, 8) {
     // Add soldiers for player 1:
     assert(!board.has_soldiers(1));
-    board[{0, 1}] = new FootCommander(1);
-    board[{0, 3}] = new FootCommander(1);
-    board[{0, 5}] = new FootSoldier(1);
+    board[{5, 6}] = new FootSoldier(1);
+    // board[{0, 3}] = new Sniper(1);
+    // board[{0, 5}] = new Sniper(1);
     assert(board.has_soldiers(1));
 
     // Add soldiers for player 2:
     assert(!board.has_soldiers(2));
     // board[{7, 1}] = new FootSoldier(2);
-    // board[{7, 3}] = new FootCommander(2);
-    board[{7, 5}] = new FootSoldier(2);
+    board[{7, 4}] = new Paramedic(2);
+    board[{7, 5}] = new Sniper(2);
     assert(board.has_soldiers(2));
 
     // In your game, you can put more soldier types, such as the sniper and the paramedic types.
 }
 
 uint DemoGame::play() {
-    board.move(1, {0, 1}, Board::MoveDIR::Up);
-    board.move(1, {1, 1}, Board::MoveDIR::Up);
-    board.move(1, {2, 1}, Board::MoveDIR::Up);
-    board.move(1, {3, 1}, Board::MoveDIR::Up);
-    board.move(1, {4, 1}, Board::MoveDIR::Up);
-    board.move(1, {5, 1}, Board::MoveDIR::Right);
-    board.move(1, {5, 2}, Board::MoveDIR::Right);
-    board.move(1, {5, 3}, Board::MoveDIR::Right); // FootSoldier of player 1 moves forward and attacks.
+    board.move(1, {5, 6}, Board::MoveDIR::Up);
+    // board.move(1, {1, 1}, Board::MoveDIR::Up);
+    // board.move(1, {2, 1}, Board::MoveDIR::Up);
+    // board.move(1, {3, 1}, Board::MoveDIR::Up); // FootSoldier of player 1 moves forward and attacks.
     if (!board.has_soldiers(2))
         return 1;
 
-    // board.move(2, {7, 1}, Board::MoveDIR::Down); // FootSoldier of player 2 moves forward and attacks.
+    board.move(2, {7, 5}, Board::MoveDIR::Down);
+    board.move(2, {7, 4}, Board::MoveDIR::Down); // FootSoldier of player 2 moves forward and attacks.
     // if (!board.has_soldiers(1))
     //     return 2;
 

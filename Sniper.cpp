@@ -1,8 +1,8 @@
-#include "FootSoldier.hpp"
+#include "Sniper.hpp"
 #include "Board.hpp"
 
-void FootSoldier::action(vector<vector<Soldier *>> &board, pair<int, int> location) {
-    pair<Soldier *, pair<int, int>> to_attack = WarGame::Board::getClosestEnemy(board, location, getEnemyPlayerNum());
+void Sniper::action(vector<vector<Soldier *>> &board, pair<int, int> location) {
+    pair<Soldier *, pair<int, int>> to_attack = WarGame::Board::getStrongestEnemy(board, location, getEnemyPlayerNum());
     if (to_attack.first == nullptr)
         return;
     to_attack.first->hp -= damage;
@@ -11,6 +11,6 @@ void FootSoldier::action(vector<vector<Soldier *>> &board, pair<int, int> locati
         delete to_attack.first;
     }
 }
-const uint FootSoldier::getInitHp() const {
+const uint Sniper::getInitHp() const {
     return INIT_HP;
 }

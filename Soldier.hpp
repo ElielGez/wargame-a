@@ -30,29 +30,7 @@ public:
 
     uint getPlayerNum() { return player_num; }
 
-    uint getEnemyPlayerNum();
-    pair<Soldier *, pair<int, int>> getClosestEnemy(vector<vector<Soldier *>> &board, pair<int, int> source, uint enemy_player_num) const;
+    int getHp() { return hp; }
 
-    //need to delete
-    pair<int, int> getClosestEnemyP(vector<vector<Soldier *>> &board, pair<int, int> source, uint enemy_player_num) const {
-        // Soldier *closest_soldier = nullptr;
-        pair<int, int> p = {0, 0};
-        double min_distance = numeric_limits<double>::max();
-        for (int i = 0; i < board.size(); i++) {
-            for (int j = 0; j < board[i].size(); j++) {
-                if (board[i][j] != nullptr) {
-                    if (board[i][j]->getPlayerNum() == enemy_player_num) {
-                        double d = sqrt(pow(source.first - source.second, 2) +
-                                        pow(i - j, 2) * 1.0);
-                        if (d < min_distance) {
-                            min_distance = d;
-                            p = {i, j};
-                            // closest_soldier = board[i][j];
-                        }
-                    }
-                }
-            }
-        }
-        return p;
-    }
+    uint getEnemyPlayerNum();
 };
