@@ -3,7 +3,6 @@
 class FootSoldier : public Soldier {
 private:
     static const int INIT_HP = 100;
-    static const uint DAMAGE = 10;
 
 public:
     FootSoldier(){};
@@ -11,7 +10,7 @@ public:
         player_num = num;
         type = FOOT_SOLDIER;
         hp = INIT_HP;
-        damage = DAMAGE;
+        damage = 10;
     };
     ~FootSoldier(){};
     void action(vector<vector<Soldier *>> &board, pair<int, int> location);

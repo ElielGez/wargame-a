@@ -3,7 +3,6 @@
 class Paramedic : public Soldier {
 private:
     static const int INIT_HP = 100;
-    static const uint DAMAGE = 0; // 0 means he cannot damaged , so he can heal full
 
 public:
     Paramedic(){};
@@ -11,7 +10,7 @@ public:
         player_num = num;
         type = FOOT_SOLDIER;
         hp = INIT_HP;
-        damage = DAMAGE;
+        damage = 0; // 0 means he cannot damaged , so he can heal full
     };
     ~Paramedic(){};
     void action(vector<vector<Soldier *>> &board, pair<int, int> location);

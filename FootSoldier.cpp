@@ -5,6 +5,7 @@ void FootSoldier::action(vector<vector<Soldier *>> &board, pair<int, int> locati
     pair<Soldier *, pair<int, int>> to_attack = WarGame::Board::getClosestEnemy(board, location, getEnemyPlayerNum());
     if (to_attack.first == nullptr)
         return;
+    printf("%d\n", damage);
     to_attack.first->hp -= damage;
     if (to_attack.first->hp <= 0) {
         board[to_attack.second.first][to_attack.second.second] = nullptr;

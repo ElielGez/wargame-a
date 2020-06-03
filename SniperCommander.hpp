@@ -3,7 +3,6 @@
 class SniperCommander : public Sniper {
 private:
     static const int INIT_HP = 120;
-    static const uint DAMAGE = 100;
 
 public:
     SniperCommander(){};
@@ -11,7 +10,7 @@ public:
         player_num = num;
         type = FOOT_COMMANDER;
         hp = INIT_HP;
-        damage = DAMAGE;
+        damage = 100;
     };
     ~SniperCommander(){};
     void action(vector<vector<Soldier *>> &board, pair<int, int> location);

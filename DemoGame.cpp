@@ -22,8 +22,8 @@ namespace WarGame {
 DemoGame::DemoGame() : board(8, 8) {
     // Add soldiers for player 1:
     assert(!board.has_soldiers(1));
-    board[{5, 6}] = new FootSoldier(1);
-    // board[{0, 3}] = new Sniper(1);
+    board[{0, 1}] = new FootCommander(1);
+    board[{0, 3}] = new FootSoldier(1);
     // board[{0, 5}] = new Sniper(1);
     assert(board.has_soldiers(1));
 
@@ -38,15 +38,15 @@ DemoGame::DemoGame() : board(8, 8) {
 }
 
 uint DemoGame::play() {
-    board.move(1, {5, 6}, Board::MoveDIR::Up);
+    board.move(1, {0, 1}, Board::MoveDIR::Up);
     // board.move(1, {1, 1}, Board::MoveDIR::Up);
     // board.move(1, {2, 1}, Board::MoveDIR::Up);
     // board.move(1, {3, 1}, Board::MoveDIR::Up); // FootSoldier of player 1 moves forward and attacks.
     if (!board.has_soldiers(2))
         return 1;
 
-    board.move(2, {7, 5}, Board::MoveDIR::Down);
-    board.move(2, {7, 4}, Board::MoveDIR::Down); // FootSoldier of player 2 moves forward and attacks.
+    // board.move(2, {7, 5}, Board::MoveDIR::Down);
+    // board.move(2, {7, 4}, Board::MoveDIR::Down); // FootSoldier of player 2 moves forward and attacks.
     // if (!board.has_soldiers(1))
     //     return 2;
 

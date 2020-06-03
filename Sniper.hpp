@@ -3,7 +3,6 @@
 class Sniper : public Soldier {
 private:
     static const int INIT_HP = 100;
-    static const uint DAMAGE = 50;
 
 public:
     Sniper(){};
@@ -11,7 +10,7 @@ public:
         player_num = num;
         type = FOOT_SOLDIER;
         hp = INIT_HP;
-        damage = DAMAGE;
+        damage = 50;
     };
     ~Sniper(){};
     void action(vector<vector<Soldier *>> &board, pair<int, int> location);
